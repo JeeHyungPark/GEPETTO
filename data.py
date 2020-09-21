@@ -28,37 +28,32 @@ for datafile in file_list:
         if "와" in word:
             together_list.append(word)
             together_index= unit.index(word)
-            what= unit[together_index:]
+            what= unit[together_index+1:]
             what= ' '.join(what)
             what_list.append(what)
         elif "과" in word:
             together_list.append(word)
             together_index= unit.index(word)
-            what= unit[together_index:]
+            what= unit[together_index+1:]
             what= ' '.join(what)
             what_list.append(what)
         elif "랑" in word:
             together_list.append(word)
             together_index= unit.index(word)
-            what= unit[together_index:]
+            what= unit[together_index+1:]
             what= ' '.join(what)
             what_list.append(what)
         elif "혼자" in word:
             together_list.append(word)
             together_index= unit.index(word)
-            what= unit[together_index:]
+            what= unit[together_index+1:]
             what= ' '.join(what)
             what_list.append(what)
-    
-print(who_list)
-print(where_list)
-print(when_list)
-print(together_list)
-print(what_list)
-'''
-datalist로 이차원 리스트 생성할 것임
-    누가    언제    어디서  누구랑  무엇을
-1
-2
-...
-'''
+
+statement_list.append(who_list)
+statement_list.append(when_list)
+statement_list.append(where_list)
+statement_list.append(together_list)
+statement_list.append(what_list)
+
+print(statement_list)
