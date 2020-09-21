@@ -21,10 +21,14 @@ for datafile in file_list:
     for where in unit:
         if "에서" in where:
             where_list.append(where)
-    
+            index= unit.index(where)
+            when= unit[1:index]
+            when= ' '.join(when)
+            when_list.append(when)
+
 print(who_list)
 print(where_list)
-
+print(when_list)
 '''
 datalist로 이차원 리스트 생성할 것임
     누가    언제    어디서  누구랑  무엇을
