@@ -4,25 +4,56 @@ import os
 
 path_dir= './dataset/'
 file_list= os.listdir(path_dir) 
-statement_list= [] 
+statement_list= []
+who_list= []
+when_list= []
+where_list= []
+together_list= []
+what_list= []
 
 for datafile in file_list: 
     f= open(path_dir+datafile, 'r')  
     statement= f.readline()
     unit= statement.split() 
     who= unit[0]  
-    statement_list.append(who) 
+    who_list.append(who) 
     
-    # for "에서" in unit:
-    #     if where in unit:
-    #         statement_list[2].append(word)
-    #         print(word)
-    
+    for word in unit:
+        if "에서" in word:
+            where_list.append(word)
+            where_index= unit.index(word)
+            when= unit[1:where_index]
+            when= ' '.join(when)
+            when_list.append(when)
+        if "와" in word:
+            together_list.append(word)
+            together_index= unit.index(word)
+            what= unit[together_index+1:]
+            what= ' '.join(what)
+            what_list.append(what)
+        elif "과" in word:
+            together_list.append(word)
+            together_index= unit.index(word)
+            what= unit[together_index+1:]
+            what= ' '.join(what)
+            what_list.append(what)
+        elif "랑" in word:
+            together_list.append(word)
+            together_index= unit.index(word)
+            what= unit[together_index+1:]
+            what= ' '.join(what)
+            what_list.append(what)
+        elif "혼자" in word:
+            together_list.append(word)
+            together_index= unit.index(word)
+            what= unit[together_index+1:]
+            what= ' '.join(what)
+            what_list.append(what)
+
+statement_list.append(who_list)
+statement_list.append(when_list)
+statement_list.append(where_list)
+statement_list.append(together_list)
+statement_list.append(what_list)
+
 print(statement_list)
-'''
-datalist로 이차원 리스트 생성할 것임
-    누가    언제    어디서  누구랑  무엇을
-1
-2
-...
-'''
