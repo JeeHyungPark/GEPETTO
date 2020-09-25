@@ -8,7 +8,7 @@ def main(request):
 
 def result(request):
    
-    file_path= request.POST['data'] #흠....wsl로 열어서 디렉토리 경로가 바껴서 파일을 못찾는다고 뜨는거 같다는 추측중..
+    file_path= 'sttApp/test.mp3' #추후 request.POST['data'] 로 변경해야 함(media)
     data= open(file_path, "rb") # STT를 진행하고자 하는 음성 파일
 
     Lang= "Kor" # Kor / Jpn / Chn / Eng
