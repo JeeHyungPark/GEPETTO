@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GEPETTO</title>
+</head>
+<body>
+  <form method="POST" action="{% url 'result' %}">
+      {% csrf_token %}
+      <input type="file" name="data">
+      <input type=submit>
+  </form>
+</body>
+</html>
