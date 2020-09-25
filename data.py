@@ -25,25 +25,7 @@ for datafile in file_list:
             when= unit[1:where_index]
             when= ' '.join(when)
             when_list.append(when)
-        if "와" in word:
-            together_list.append(word)
-            together_index= unit.index(word)
-            what= unit[together_index+1:]
-            what= ' '.join(what)
-            what_list.append(what)
-        elif "과" in word:
-            together_list.append(word)
-            together_index= unit.index(word)
-            what= unit[together_index+1:]
-            what= ' '.join(what)
-            what_list.append(what)
-        elif "랑" in word:
-            together_list.append(word)
-            together_index= unit.index(word)
-            what= unit[together_index+1:]
-            what= ' '.join(what)
-            what_list.append(what)
-        elif "혼자" in word:
+        if ("와" in word) or ("과" in word) or ("랑" in word) or ("혼자" in word):
             together_list.append(word)
             together_index= unit.index(word)
             what= unit[together_index+1:]
