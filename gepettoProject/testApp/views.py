@@ -3,12 +3,12 @@ import os, sys
 import requests
 
 
-def main(request):
-    return render(request, 'main.html')
+def input(request):
+    return render(request, 'input.html')
 
 def result(request):
    
-    file_path= 'sttApp/test.mp3' #추후 request.POST['data'] 로 변경해야 함(media)
+    file_path= 'testApp/test.mp3' #추후 request.POST['data'] 로 변경해야 함(media)
     data= open(file_path, "rb") # STT를 진행하고자 하는 음성 파일
 
     Lang= "Kor" # Kor / Jpn / Chn / Eng
