@@ -32,10 +32,6 @@ for datafile in file_list:
             what= ' '.join(what)
             what_list.append(what)
 
-statement_list.append(who_list)
-statement_list.append(when_list)
-statement_list.append(where_list)
-statement_list.append(together_list)
-statement_list.append(what_list)
+statement_list = [who_list, when_list, where_list, together_list, what_list]
 
 print(statement_list)
