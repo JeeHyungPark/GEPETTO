@@ -6,7 +6,7 @@ import requests
 def input(request):
     return render(request, 'input.html')
 
-def result(request):
+def check(request):
    
     file_path= 'testApp/test.mp3' #추후 request.POST['data'] 로 변경해야 함(media)
     data= open(file_path, "rb") # STT를 진행하고자 하는 음성 파일
@@ -30,4 +30,10 @@ def result(request):
     else:
         response = "Error : " + response.text
 
-    return render(request, 'result.html', {'response':response})
+    return render(request, 'check.html', {'response':response})
+
+def question(request):
+    return render(request, 'question.html')
+
+def result(request):
+    return render(request, 'result.html')

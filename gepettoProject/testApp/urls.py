@@ -3,5 +3,7 @@ import testApp.views
 
 urlpatterns = [
     path('', testApp.views.input),
-    path('result/', testApp.views.result, name='result'),
+    path('check/', testApp.views.check, name='check'),
+    path('question/', testApp.views.question, name='question'),
+    path('result/', testApp.views.question, name='result'),
 ]
