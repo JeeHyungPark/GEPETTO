@@ -1,4 +1,7 @@
 from django.shortcuts import render
+import os, sys
+import random
+import requests
 
 
 def login(request):
