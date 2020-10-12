@@ -2,10 +2,38 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>GEPETTO</title>
   <link rel="stylesheet" href="{% static 'style/question.css' %}" type="text/css"/>
+  
+  <style>
+    div{background-color:antiquewhite;
+      width:50%;
+      padding:30px;
+      margin:0 auto;
+      word-break:break-all;
+      border-color: antiquewhite; background-color:rgba(211, 211, 211, 0.2);}
+    p{line-height:30px;}
+
+  </style>
+
 </head>
 <body>
-  질문 출력 페이지
+  <div>
+    <h1>Question 1</h1>
+    <p>
+      영희는 10월 11일 수요일 오전 10시에 영수와 함께 도서관을 갔다.
+      <form>
+        <input type='button' value='O'/>
+      </form>
+      <br>
+      <form>
+        <input type='button' value='X'/>
+      </form>
+    </p>
+  </div>
+  
+  
+
 </body>
 </html>
