@@ -2,7 +2,6 @@ from django.shortcuts import render
 import os, sys
 import requests
 
-
 def input(request):
     return render(request, 'input.html')
 

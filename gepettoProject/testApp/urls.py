@@ -5,5 +5,5 @@ urlpatterns = [
     path('', testApp.views.input),
     path('check/', testApp.views.check, name='check'),
     path('question/', testApp.views.question, name='question'),
-    path('result/', testApp.views.question, name='result'),
+    path('result/', testApp.views.result, name='result'),
 ]
