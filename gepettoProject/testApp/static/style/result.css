@@ -1,3 +1,35 @@
-html{
-    background-color: orange;
+body{
+    padding: 100px;
+    text-align: center;
+}
+
+.result_text{
+    font-size: 46px;
+}
+
+.result_percent{
+    font-size: 46px;
+    color: darkred;
+}
+
+.statement_text{
+    margin: 10px;
+}
+
+span{
+    color: red;
+}
+
+.ox{
+    color: blue;
+}
+
+table{
+    margin: auto;
+}
+
+.button{
+    margin-top: 20px;
+    text-align: right;
+    padding-right: 20%;
 }

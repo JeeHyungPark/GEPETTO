@@ -6,6 +6,31 @@
   <link rel="stylesheet" href="{% static 'style/result.css' %}" type="text/css"/>
 </head>
 <body>
-  결과 페이지
+  <div class='result_text'>당신이 거짓말을 했을 확률은</div>
+  <div class='result_percent'>67 %</div>
+  <div class='result_text'>입니다.</div>
+  
+  <hr/>
+  <div class='statement_text'>당신의 진술 : 저는 지난주 월요일 오후 1시에 집에서 가족과 티비를 봤습니다.</div>
+  <table border = 1>
+    <tr>
+      <td>질문 1</td>
+      <td>저는 지난주 <span>화요일 오후 1시에</span> 집에서 가족과 티비를 봤습니다.</td>
+      <td class='ox'>X</td>
+    </tr>
+    <tr>
+      <td>질문 2</td>
+      <td>저는 지난주 월요일에 오후 1시에 집에서 <span>혼자</span> 티비를 봤습니다.</td>
+      <td class='ox'>X</td>
+    </tr>
+    <tr>
+      <td>질문 3</td>
+      <td>저는 지난주 월요일에 오후 1시에 집에서 가족과 <span>게임을 했습니다.<span></span></td>
+      <td class='ox'>O</td>
+    </tr>
+  </table>
+  <div class='button'>
+    <button type='input'>끝내기</button>
+  </div>
 </body>
 </html>
