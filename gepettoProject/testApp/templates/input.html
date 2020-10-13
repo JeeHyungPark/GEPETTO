@@ -2,14 +2,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GEPETTO</title>
+  <meta charset = 'UTF-8'>
+  <title>INPUT</title>
   <link rel="stylesheet" href="{% static 'style/input.css' %}" type="text/css"/>
 </head>
+
+
 <body>
-  <form method="POST" action="">
-      {% csrf_token %}
-      <input type="file" name="data">
-      <input type=submit>
-  </form>
+
+<div class="wrapper">
+
+<div class="main_content">
+    <div class="menubar"> 
+   
+        <ul>
+           
+            <li><a href="#">mypage</a></li>
+            <li><a href="#">Logout</a></li>
+          </ul>
+    </div>    
+
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js" type="text/javascript" charset="utf-8"></script>
+   
+  
+
+
+    <div class="content">
+        
+    </div>
+    <h1>아래의 형식에 맞춘 음성 파일을 선택 해주세요.</h1>
+    <br>
+    <br>
+ 
+<h3> "저는 어제 오후 3시에 집에서 유리와 밥을 먹었습니다."</h3>
+<br>  
+</hr>
+    <form method="POST" action="">
+        {% csrf_token %}
+        
+          <table>
+              <tr>
+                  <th>  </th>
+  
+                  <input  type="file" name="data">
+              </tr>
+              <tr>
+           
+                  <td colspan="2">
+                  <input type=submit name = "submit">
+                </td>  
+                </tr>
+  
+                  </table>
+                  </form>
+    </div>
+</div>    
 </body>
 </html>
+
+
+
