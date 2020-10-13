@@ -5,6 +5,6 @@ import mainApp.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include(mainApp.urls)),
-    path('test/',include('testApp.urls')),
+    path('main/',include(mainApp.urls)),
+    path('',include('testApp.urls')),
 ]
