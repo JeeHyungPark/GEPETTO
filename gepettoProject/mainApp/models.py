@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.contrib.auth.models import AbstractBaseUser,BaseUserManager,PermissionsMixin
 from django.db import models 
 
@@ -58,3 +59,6 @@ class User(AbstractBaseUser,PermissionsMixin):
     date_joined = models.DateTimeField(auto_now_add=True)     
     USERNAME_FIELD = 'nickname'    
     REQUIRED_FIELDS = ['email']
+=======
+from django.db import models
+>>>>>>> 698c2b9a0b6c2975ad7091e49f41cf83a8532d14
