@@ -1,11 +1,13 @@
 from django.db import models
+from mainApp.models import *
+from django.conf import settings
 
 class Test(models.Model):
     ANSWER = [
-        (O, 'O'),
-        (X, 'X'),
+        ('O', 'O'),
+        ('X', 'X'),
     ]
-    tester = models.ForeignKey(get_user_model(), on_delete=models.set_NULL, null=True, blank=True, relate_name='tests')
+    tester = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     text = models.TextField()
     question1 = models.TextField()
     question2 = models.TextField()
@@ -13,17 +15,17 @@ class Test(models.Model):
     answer1 = models.CharField(
         max_length = 1,
         choices = ANSWER,
-        default = O,
+        default = 'O',
     )
     answer2 = models.CharField(
         max_length = 1,
         choices = ANSWER,
-        default = O,
+        default = 'O',
     )
     answer3 = models.CharField(
         max_length = 1,
         choices = ANSWER,
-        default = O,
+        default = 'O',
     )
     test_probability = models.CharField(
         max_length = 80,
