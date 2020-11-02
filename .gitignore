@@ -8,4 +8,4 @@ db.sqlite3
 db.sqlite3-journal
 media
 myvenv
-**/migrations/000*.py
+**/migrations/00*.py
