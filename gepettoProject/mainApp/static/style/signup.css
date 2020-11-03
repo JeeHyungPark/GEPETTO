@@ -20,10 +20,12 @@ li a {
 li a:hover:not(.active) {
   background-color: #111;
 }
+
 form{
     text-align: center;    
     margin-top: 20px;
 }
+
 input{
   width: 30%;
   padding: 12px 20px;
@@ -31,6 +33,11 @@ input{
   box-sizing: border-box;
   border: none;
   border-bottom: 2px solid #111;
+}
+
+.gender_input{
+  width: 10%;
+  text-align: center;
 }
 
 input[type=submit]{

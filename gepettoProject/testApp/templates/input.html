@@ -10,39 +10,21 @@
 
 <body>
   <ul>
-    <li style="float: left"><a>GEPETTO</a></li>
-    <li><a href="#">Mypage</a></li>
+    <li style="float: left"><a href="{% url 'main' %}">GEPETTO</a></li>
+    <li><a href="{% url 'mypage' %}">Mypage</a></li>
     <li><a href="#">Logout</a></li>
   </ul> 
 
   <h1>아래의 형식에 맞춘 음성 파일을 선택 해주세요.</h1>
-  <br>
-  <br>
  
-<h3> "저는 어제 오후 3시에 집에서 유리와 밥을 먹었습니다."</h3>
-<br>  
-</hr>
-    <form method="POST" action="">
-        {% csrf_token %}
-        
-          <table>
-              <tr>
-                  <th>  </th>
-  
-                  <input  type="file" name="data">
-              </tr>
-              <tr>
-           
-                  <td colspan="2">
-                  <input type=submit name = "submit">
-                </td>  
-                </tr>
-  
-                  </table>
-                  </form>
-    </div>
-</div>    
+  <h3> "저는 어제 오후 3시에 집에서 유리와 밥을 먹었습니다."</h3>
 
+  <hr/>
+  <form method="POST" action="">
+    {% csrf_token %}
+    <input  type="file" name="data">
+    <input class='submit' type=submit name = "submit">
+  </form>
 </body>
 </html>
 

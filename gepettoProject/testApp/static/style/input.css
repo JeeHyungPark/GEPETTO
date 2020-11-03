@@ -1,21 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap');
 
-body{
-  color : black;
-}
-.wrapper{
-  display: flex;
-  position: relative;
-}
-
-
-
-.wrapper .main_content{
-  width: 200%;
-  margin-left: 5px;
- 
-}
-
 ul{
   list-style-type: none;
   margin: 0;
@@ -23,6 +7,7 @@ ul{
   overflow: hidden;
   background-color: #333;
 }
+
 li {
 float: right;
 }
@@ -38,24 +23,7 @@ text-decoration: none;
 li a:hover:not(.active) {
 background-color: #111;
 }
-          
-          
-          
-          
-          
-          th,td{
-                padding: 2px;
-            }
-            th{
-                
-                width: 2px;
-            }
-            td{
-                text-align: center;
-               
-            }
-        
 
-          input[type="submit"]{
-               width: 75px;
-            }
+.submit{
+  width: 75px;
+}
