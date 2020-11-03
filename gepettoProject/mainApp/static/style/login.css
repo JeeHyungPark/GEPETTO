@@ -1,17 +1,25 @@
+html{
+    text-align: center;
+}
 
-            th,td{
-                padding: 10px;
-            }
-            th{
-                
-                width: 70px;
-            }
-            td{
-                text-align: center;
-               
-            }
+.main_button{
+    text-decoration: none;
+    color: black;
+}
 
-          input[type="submit"]{
-               width: 160px;
-            }
+h1{
+    margin: 50px;
+}
 
+div{
+    margin: 20px;
+}
+
+input{
+    border: 1px solid;
+    border-radius: 2px;
+}
+
+.submit{
+    width: 260px;
+}

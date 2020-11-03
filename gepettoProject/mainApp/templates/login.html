@@ -7,35 +7,23 @@
   <link rel="stylesheet" href="{% static 'style/login.css' %}" type="text/css"/>
 </head>
 <body>
-    <h1>GEPETTO</h1>
-    <hr/>
+  <h1><a class="main_button" href="{% url 'main' %}">GEPETTO</a></h1>
 
-   
-    <form action="" method="POST">
-        <table>
-            <tr>
-                <th>ID</th>
-                <td><input type="text" name="userId" value="" placeholder="아이디를 입력하세요"/></td>
-                
-            </tr>
-            <tr>
-                <th>PW</th>
-                <td><input type="password" name="userPw" value="" placeholder="비밀번호를 입력하세요"/></td>
-            </tr>
-            <tr>
-                <th> </th>
-                    <td><input type="submit" value="입장"/></td>
-                </td>
-                </tr>
-            <tr>
-                <th> </th>
-                <td colspan="4">
-                 
-                    <input type="button" value="회원가입"/>
-                    <input type="button" value="ID/PW 찾기"/>
-                </td>
-            </tr>
-        </table>
-    </form>
+  <form action="{% url 'input' %}" method="POST">
+    {% csrf_token %}
+    <div>
+      <label for="nickname">닉네임</label>
+      <input type="text" name="nickname" value="" placeholder="닉네임을 입력하세요"/>
+    </div>
+    <div>
+      <label for="password">비밀번호</label>
+      <input type="password" name="password" value="" placeholder="비밀번호를 입력하세요"/>
+    </div>
+    <div>
+      <input class="submit" type="submit" value="입장"/>
+    </div>
+    아직 회원이 아니신가요? <a href="{% url 'signup' %}">회원가입</a>
+    <!-- <input type="button" value="ID/PW 찾기"/>       -->
+  </form>
 </body>
 </html>
