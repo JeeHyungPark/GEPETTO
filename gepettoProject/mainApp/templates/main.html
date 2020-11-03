@@ -7,15 +7,18 @@
 </head>
 <body>
   <ul>
-    <li style="float: left"><a>GEPETTO</a></li>
-    <li><a href="#">Mypage</a></li>
+    <li style="float: left"><a href="{% url 'main' %}">GEPETTO</a></li>
+    <li><a href="{% url 'mypage' %}">Mypage</a></li>
     <li><a href="#">Logout</a></li>
   </ul>
   <div>
     GEPETTO는 거짓말을 하면 말한 내용이 일치 하지 않는 것을 이용하여 진술을 받아 말한 사람이 진술을 기억하고 있는지 아닌지를 파악하는 프로그램입니다. 
   </div>
   <div>
-    <button>탐지하러 가기</button>
+    <form method="POST" action="">
+      {% csrf_token %}
+      <input class="button" type='submit' value="탐지하러 가기">
+    </form>
   </div>
 </body>
 </html>
