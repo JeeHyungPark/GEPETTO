@@ -33,6 +33,14 @@ input{
   box-sizing: border-box;
   border: none;
   border-bottom: 2px solid #111;
+  margin-bottom: 20px;
+}
+
+hr{
+  width: 30%;
+  border: 1px solid;
+  background-color: black;
+  margin-bottom: 20px;
 }
 
 .gender_input{
