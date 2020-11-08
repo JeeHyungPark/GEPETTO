@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Test
 from mainApp.models import User
 import os, sys
@@ -36,10 +36,18 @@ def check(request):
             response= response.text
         else:
             response = "Error : " + response.text
+        
+        test.text = response[9:-2]
+        test.save()
 
-        return render(request, 'check.html', {'response':response[9:-2]})
+        return render(request, 'check.html', {'response':response[9:-2], 'test':test})
 
-def question(request):
+def question(request, test_id):
+    if request.method == 'POST':
+        test = Test.objects.get(pk = test_id)
+        test.text = request.POST['modified_statement']
+        test.save()
+        
     return render(request, 'question.html')
 
 def result(request):

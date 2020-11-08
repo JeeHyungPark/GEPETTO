@@ -6,6 +6,6 @@ import testApp.views
 urlpatterns = [
     path('', testApp.views.input, name='input'),
     path('check/', testApp.views.check, name='check'),
-    path('question/', testApp.views.question, name='question'),
+    path('question/<int:test_id>', testApp.views.question, name='question'),
     path('result/', testApp.views.result, name='result'),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

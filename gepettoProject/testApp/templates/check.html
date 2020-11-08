@@ -11,18 +11,18 @@
     "{{response}}" 가 맞습니까?
     <br>
     <br>
-    <form method="POST" action="{% url 'question' %}">
+    <form method="POST" action="{% url 'question' test.id %}">
       {% csrf_token %}
       <input type="submit" value="예"/>
     </form>
     <br>
     <button onclick="showForm()">수정하기</button>
     <div id="modify">
-      <!-- <form method="POST" action="{% url 'question' %}">
+      <form method="POST" action="{% url 'question' test.id %}">
         {% csrf_token %}
-        <input type="text">
-        <input type="submit" value="수정하기">
-      </form> -->
+        <input type="text" name="modified_statement" value="{{test.text}}" maxlength=50>
+        <input type="submit" value="수정완료">
+      </form>
     </div>
   </div>
   <script>
