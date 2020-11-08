@@ -60,7 +60,7 @@ def question(request, test_id):
         mytest.question3 = dataClass.makeQuestion3(originalStatement)
         mytest.save()
 
-    return render(request, 'question.html')
+    return render(request, 'question.html', {'mytest':mytest})
 
 def result(request):
     return render(request, 'result.html')
