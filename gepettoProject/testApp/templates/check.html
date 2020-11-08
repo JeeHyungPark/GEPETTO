@@ -4,35 +4,31 @@
 <head>
   <title>GEPETTO</title>
   <link rel="stylesheet" href="{% static 'style/check.css' %}" type="text/css"/>
-    
-  <style>
-    div{background-color:antiquewhite;
-      width:50%;
-      padding:30px;
-      margin:0 auto;
-      word-break:break-all;
-      border-color: antiquewhite; background-color:rgba(211, 211, 211, 0.2);}
-    p{line-height:30px;}
-
-  </style>
-
-
 </head>
 <body>
   <div>
-    <p>
-      <h1> 확인 질문 </h1>
-      "영희는 10월 11일 수요일 오후 1시에 영수와 함께 집 앞 카페를 갔다." 가 맞습니까?
-      <br>
-      <br>
-      <form>
-        <input type='button' value='예'/>
-      </form>
-      <br>
-      <form>
-        <input type='button' value='수정하기'/>
-      </form>
-    </p>
+    <h1> 확인 질문 </h1>
+    "{{response}}" 가 맞습니까?
+    <br>
+    <br>
+    <form method="POST" action="{% url 'question' %}">
+      {% csrf_token %}
+      <input type="submit" value="예"/>
+    </form>
+    <br>
+    <button onclick="showForm()">수정하기</button>
+    <div id="modify">
+      <!-- <form method="POST" action="{% url 'question' %}">
+        {% csrf_token %}
+        <input type="text">
+        <input type="submit" value="수정하기">
+      </form> -->
+    </div>
   </div>
+  <script>
+    function showForm(){
+      document.getElementById("modify").style.display = "block";
+    }
+  </script>
 </body>
 </html>

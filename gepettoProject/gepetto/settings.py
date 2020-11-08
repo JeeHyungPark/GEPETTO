@@ -114,4 +114,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'testApp', 'static'),
 )
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'testApp', 'media')
+
 AUTH_USER_MODEL = 'mainApp.User'

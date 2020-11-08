@@ -20,13 +20,10 @@
   <h3> "저는 어제 오후 3시에 집에서 유리와 밥을 먹었습니다."</h3>
 
   <hr/>
-  <form method="POST" action="{% url 'question' %}">
+  <form method="POST" action="{% url 'check' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    <input  type="file" name="data">
+    <input  type="file" name="statement">
     <input class='submit' type=submit name = "submit">
   </form>
 </body>
 </html>
-
-
-

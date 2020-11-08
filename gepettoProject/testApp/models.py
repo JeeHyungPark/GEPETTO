@@ -8,6 +8,7 @@ class Test(models.Model):
         ('X', 'X'),
     ]
     tester = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    statement = models.FileField(blank="true", upload_to="statement/%Y%m%d")
     text = models.TextField()
     question1 = models.TextField()
     question2 = models.TextField()
@@ -31,3 +32,6 @@ class Test(models.Model):
         max_length = 80,
         default = 0,
     )
+    
+    def __str__(self):
+        return str(self.tester.nickname)+str(self.id)
