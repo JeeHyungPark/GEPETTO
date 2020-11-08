@@ -88,11 +88,20 @@ def result(request, test_id):
         myStatement = test.text
         dataClass = data()
         originalStatement = dataClass.splitMystatement(myStatement)
-        q_when = dataClass.makeQuestion1(originalStatement)[1]
-        q_together = dataClass.makeQuestion2(originalStatement)[1]
-        q_what = dataClass.makeQuestion3(originalStatement)[1]
 
-    return render(request, 'result.html', {'test':test, 'q_when':q_when, 'q_together':q_together, 'q_what':q_what})
+        q1 = dataClass.makeQuestion1(originalStatement)
+        q2 = dataClass.makeQuestion2(originalStatement)
+        q3 = dataClass.makeQuestion3(originalStatement)
+
+        q_when = q1[1]
+        q_together = q2[1]
+        q_what = q3[1]
+
+        q_look1 = dataClass.resultLook1(q1)
+        q_look2 = dataClass.resultLook2(q2)
+        q_look3 = dataClass.resultLook3(q3)
+
+    return render(request, 'result.html', {'test':test, 'q_when':q_when, 'q_together':q_together, 'q_what':q_what, 'q_look1':q_look1, 'q_look2':q_look2, 'q_look3':q_look3})
 
 ## 질문생성을 위함 ##
 path_dir= '../dataset/'
@@ -165,3 +174,18 @@ class data:
         question3[4] = random_what
         question3 = [" ".join(question3), random_what]
         return question3
+
+    def resultLook1(self, question1):
+        result1 = copy.deepcopy(question1)
+        splitResult1 = result1[0].split(result1[1])
+        return splitResult1
+    
+    def resultLook2(self, question2):
+        result2 = copy.deepcopy(question2)
+        splitResult2 = result2[0].split(result2[1])
+        return splitResult2
+
+    def resultLook3(self, question3):
+        result3 = copy.deepcopy(question3)
+        splitResult3 = result3[0].split(result3[1])
+        return splitResult3
