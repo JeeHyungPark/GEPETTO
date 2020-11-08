@@ -55,15 +55,44 @@ def question(request, test_id):
         myStatement = mytest.text
         dataClass = data()
         originalStatement = dataClass.splitMystatement(myStatement)
-        mytest.question1 = dataClass.makeQuestion1(originalStatement)
-        mytest.question2 = dataClass.makeQuestion2(originalStatement)
-        mytest.question3 = dataClass.makeQuestion3(originalStatement)
+        mytest.question1 = dataClass.makeQuestion1(originalStatement)[0]
+        mytest.question2 = dataClass.makeQuestion2(originalStatement)[0]
+        mytest.question3 = dataClass.makeQuestion3(originalStatement)[0]
         mytest.save()
 
     return render(request, 'question.html', {'mytest':mytest})
 
-def result(request):
-    return render(request, 'result.html')
+def result(request, test_id):
+    if request.method == 'POST':
+        incorrect_number = 0
+
+        answer1 = request.POST['ox1']
+        answer2 = request.POST['ox2']
+        answer3 = request.POST['ox3']
+
+        test = Test.objects.get(pk=test_id)
+        test.answer1 = answer1
+        test.answer2 = answer2
+        test.answer3 = answer3
+
+        if (test.text != test.question1) and (answer1 == 'O'):
+            incorrect_number += 1
+        if (test.text != test.question2) and (answer2 == 'O'):
+            incorrect_number += 1
+        if (test.text != test.question3) and (answer3 == 'O'):
+            incorrect_number += 1
+        
+        test.test_probability = 100*(round(incorrect_number/3, 2))
+        test.save()
+
+        myStatement = test.text
+        dataClass = data()
+        originalStatement = dataClass.splitMystatement(myStatement)
+        q_when = dataClass.makeQuestion1(originalStatement)[1]
+        q_together = dataClass.makeQuestion2(originalStatement)[1]
+        q_what = dataClass.makeQuestion3(originalStatement)[1]
+
+    return render(request, 'result.html', {'test':test, 'q_when':q_when, 'q_together':q_together, 'q_what':q_what})
 
 ## 질문생성을 위함 ##
 path_dir= '../dataset/'
@@ -120,19 +149,19 @@ class data:
         question1 = copy.deepcopy(mystatement)
         random_when = random.choice(when_list)
         question1[1] = random_when
-        question1 = " ".join(question1)
+        question1 = [" ".join(question1),random_when]
         return question1
     
     def makeQuestion2(self, mystatement):
         question2 = copy.deepcopy(mystatement)
         random_together = random.choice(together_list)
         question2[3] = random_together
-        question2 = " ".join(question2)
+        question2 = [" ".join(question2), random_together]
         return question2
     
     def makeQuestion3(self, mystatement):
         question3 = copy.deepcopy(mystatement)
         random_what = random.choice(what_list)
         question3[4] = random_what
-        question3 = " ".join(question3)
+        question3 = [" ".join(question3), random_what]
         return question3

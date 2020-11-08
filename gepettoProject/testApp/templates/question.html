@@ -7,14 +7,14 @@
   <link rel="stylesheet" href="{% static 'style/question.css' %}" type="text/css"/>
 </head>
 <body>
-  <form method="POST" action="{% url 'result' %}">
+  <form method="POST" action="{% url 'result' mytest.id %}">
     {% csrf_token %}
     <div id='page1'>
       <h1>Question 1</h1>
       <p>
         {{mytest.question1}}
-        <input class='page1' type='radio' name='ox' value='O'/>O
-        <input class='page1' type='radio' name='ox' value='X'/>X
+        <input class='page1' type='radio' name='ox1' value='O'/>O
+        <input class='page1' type='radio' name='ox1' value='X'/>X
         <button onclick="page2()" type='button'>다음</button>
       </p>
     </div>
@@ -22,8 +22,8 @@
       <h1>Question 2</h1>
       <p>
         {{mytest.question2}}
-        <input class='page2' type='radio' name='ox' value='O'/>O
-        <input class='page2' type='radio' name='ox' value='X'/>X
+        <input class='page2' type='radio' name='ox2' value='O'/>O
+        <input class='page2' type='radio' name='ox2' value='X'/>X
         <button onclick="page3()" type='button'>다음</button>
       </p>
     </div>
@@ -31,8 +31,8 @@
       <h1>Question 3</h1>
       <p>
         {{mytest.question3}}
-        <input class='page3' type='radio' name='ox' value='O'/>O
-        <input class='page3' type='radio' name='ox' value='X'/>X
+        <input class='page3' type='radio' name='ox3' value='O'/>O
+        <input class='page3' type='radio' name='ox3' value='X'/>X
         <input type='submit' value='끝!'>
       </p>
     </div>
