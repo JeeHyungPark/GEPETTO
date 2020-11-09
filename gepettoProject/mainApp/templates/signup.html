@@ -9,19 +9,9 @@
   <ul>
     <li style="float: left"><a href="{% url 'main' %}">GEPETTO</a></li>
   </ul>
-<form method="POST" action="{% url 'signup' %}">
+<form method="POST" action="">
   {% csrf_token %}
-  <label for="nickname">닉네임</label> <br>
-  <input type="text" name="nickname"><br>
-  <label>비밀번호</label> <br> <input type="password" name="password"> <br>
-  <label>이메일</label> <br><input type="email" name="email"> <br>
-  <label>성별</label><br>
-  <label for="male">남성</label>
-  <input class="gender_input" type="radio" id="male" name="gender" value="male">
-  <label for="female">여성</label>
-  <input class="gender_input" type="radio" id="female" name="gender" value="female"><br>
-  <hr/>
-  <label for="age">나이</label><br><input type="number" min = "1" max = "200" name="age"><br>
+  {{form.as_p}}
   <input type="submit" value="회원가입">
 </form>
 </body>

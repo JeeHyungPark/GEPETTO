@@ -1,45 +1,77 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User
-from .models import *
-from django.contrib import auth
-from django.contrib.auth import authenticate, login, logout
 import os, sys
 import random
 import requests
+from django.views.generic.edit import FormView
+from . import forms
+from django.contrib.auth import login,authenticate, logout
+from django.urls import reverse_lazy
+from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib import messages
+from .models import User
+from django.db.models import Q
 
-
-def login(request):
-    if request.user.is_anonymous:
-        if request.method == 'POST':
-            if 'nickname' in request.POST:
-                nickname = request.POST['nickname']
-                password = request.POST['password']
-                user = authenticate(request, nickname=nickname, password=password)
-                if user is not None:
-                    auth.login(request, user)
-                    return redirect('login')
-                else:
-                    return render(request, 'testApp/input.html')
-        return render(request, 'login.html')
-    else:
-        return render(request, 'testApp/input.html')
 
 def main(request):
     return render(request, 'main.html')
 
-def signup(request):
-    if request.method == 'POST':
-        user = User.objects.create_user(request.POST['email'], request.POST['nickname'], request.POST['password'])
-        user.gender = request.POST['gender']
-        user.age = request.POST['age']
-        user.save
-        return render(request, 'login.html')
-    return render(request, 'signup.html')
+class SignupView(FormView):
+    """sign up user view"""
+    form_class = forms.SignupForm
+    template_name = 'signup.html'
+    success_url = 'http://127.0.0.1:8000/test'
+
+    def form_valid(self, form):
+        """ process user signup"""
+        user = form.save(commit=False)
+        user.save()
+        
+        print(user.nickname)
+        print(user.email)
+        print(user.password)
+        login(self.request, user)
+        if user is not None:
+            return HttpResponseRedirect(self.success_url)
+
+        return super().form_valid(form)
+
+
+class LoginView(FormView):
+    """login view"""
+
+    form_class = forms.LoginForm
+    success_url = 'http://127.0.0.1:8000/test'
+    template_name = 'login.html'
+
+    def form_valid(self, form):
+        """ process user login"""
+        credentials = form.cleaned_data
+        queryset = User.objects.all()
+        user = queryset.filter(email=credentials['email'], password=credentials['password'])
+        print(queryset)
+        print(user[0])
+
+        if user is not None:
+            login(self.request, user[0])
+            return HttpResponseRedirect(self.success_url)
+
+        else:
+            messages.add_message(self.request, messages.INFO, 'Wrong credentials\
+                                please try again')
+            return HttpResponseRedirect('http://127.0.0.1:8000/login')
+
+
+def Logout(request):
+    logout(request)
+    return HttpResponseRedirect('http://127.0.0.1:8000/')
 
 def mypage(request):
-    user = request.user
-    username = request.user.nickname
-    return render(request, 'mypage.html', {'user':user, 'username':username})
+    cur_user = request.user
+
+    if cur_user.is_authenticated:  
+        return render(request, 'mypage.html')
+    else:
+        return redirect('main')
 
 def mypage_edit(request):
     return render(request, 'mypage_edit.html')
