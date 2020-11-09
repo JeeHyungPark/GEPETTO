@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class='result_text'>당신이 거짓말을 했을 확률은</div>
-  <div class='result_percent'>{{test.test_probability}}</div>
+  <div class='result_percent'>{{test.test_probability}}%</div>
   <div class='result_text'>입니다.</div>
   
   <hr/>
@@ -30,7 +30,7 @@
     </tr>
   </table>
   <div class='button'>
-    <button type='input'>끝내기</button>
+    <a href = "{% url 'input' %}" ><button type='input'>끝내기</button></a>
   </div>
 </body>
 </html>
