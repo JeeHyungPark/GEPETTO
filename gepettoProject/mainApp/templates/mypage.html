@@ -8,14 +8,17 @@
 <body>
   <ul>
     <li style="float: left"><a href="{% url 'main' %}">GEPETTO</a></li>
+    {% if user.is_authenticated %}
     <li><a href="{% url 'mypage' %}">Mypage</a></li>
-    <li><a href="#">Logout</a></li>
+    <li><a href="{% url 'logout' %}">Logout</a></li>
+    {% endif %}
   </ul>
   <div class='container'>
     <form action=''>
       <div class='input'>
+
         <label for='nickname'>닉네임</label>
-        <input type='text' name='nickname' value='닉네임 뭐로 하지' disabled>  
+        {{ user.nickname }}
       </div>
       <div class='input'>
         <label for='pw'>PW</label>
