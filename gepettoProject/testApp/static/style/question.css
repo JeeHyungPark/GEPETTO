@@ -10,3 +10,11 @@ div{
 p{
     line-height:30px;
 }
+
+#page2{
+    display: none;
+}
+
+#page3{
+    display:none;
+}

@@ -7,19 +7,46 @@
   <link rel="stylesheet" href="{% static 'style/question.css' %}" type="text/css"/>
 </head>
 <body>
-
-  <div>
-    <h1>Question 1</h1>
-    <p>
-      영희는 10월 11일 수요일 오전 10시에 영수와 함께 도서관을 갔다.
-      <form>
-        <input type='button' value='O'/>
-      </form>
-      <br>
-      <form>
-        <input type='button' value='X'/>
-      </form>
-    </p>
-  </div>
+  <form method="POST" action="{% url 'result' mytest.id %}">
+    {% csrf_token %}
+    <div id='page1'>
+      <h1>Question 1</h1>
+      <p>
+        {{mytest.question1}}
+        <input class='page1' type='radio' name='ox1' value='O'/>O
+        <input class='page1' type='radio' name='ox1' value='X'/>X
+        <button onclick="page2()" type='button'>다음</button>
+      </p>
+    </div>
+    <div id='page2'>
+      <h1>Question 2</h1>
+      <p>
+        {{mytest.question2}}
+        <input class='page2' type='radio' name='ox2' value='O'/>O
+        <input class='page2' type='radio' name='ox2' value='X'/>X
+        <button onclick="page3()" type='button'>다음</button>
+      </p>
+    </div>
+    <div id='page3'>
+      <h1>Question 3</h1>
+      <p>
+        {{mytest.question3}}
+        <input class='page3' type='radio' name='ox3' value='O'/>O
+        <input class='page3' type='radio' name='ox3' value='X'/>X
+        <input type='submit' value='끝!'>
+      </p>
+    </div>
+  </form>
+  <script>
+    function page2(){
+      document.getElementById("page1").style.display = "none";
+      document.getElementById("page2").style.display = "block";
+    }
+    function page3(){
+      document.getElementById("page1").style.display = "none";
+      document.getElementById("page2").style.display = "none";
+      document.getElementById("page3").style.display = "block";
+    }
+  </script>
 </body>
 </html>

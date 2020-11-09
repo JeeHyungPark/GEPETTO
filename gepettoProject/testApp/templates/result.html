@@ -7,30 +7,30 @@
 </head>
 <body>
   <div class='result_text'>당신이 거짓말을 했을 확률은</div>
-  <div class='result_percent'>67 %</div>
+  <div class='result_percent'>{{test.test_probability}}%</div>
   <div class='result_text'>입니다.</div>
   
   <hr/>
-  <div class='statement_text'>당신의 진술 : 저는 지난주 월요일 오후 1시에 집에서 가족과 티비를 봤습니다.</div>
+  <div class='statement_text'>당신의 진술 : {{test.text}}</div>
   <table border = 1>
     <tr>
       <td>질문 1</td>
-      <td>저는 지난주 <span>화요일 오후 1시에</span> 집에서 가족과 티비를 봤습니다.</td>
-      <td class='ox'>O</td>
+      <td>{{q_look1.0}} <span>{{q_when}}</span> {{q_look1.1}}</td>
+      <td class='ox'>{{test.answer1}}</td>
     </tr>
     <tr>
       <td>질문 2</td>
-      <td>저는 지난주 월요일에 오후 1시에 집에서 <span>혼자</span> 티비를 봤습니다.</td>
-      <td class='ox'>X</td>
+      <td>{{q_look2.0}} <span>{{q_together}}</span> {{q_look2.1}}</td>
+      <td class='ox'>{{test.answer2}}</td>
     </tr>
     <tr>
       <td>질문 3</td>
-      <td>저는 지난주 월요일에 오후 1시에 집에서 가족과 <span>게임을 했습니다.<span></span></td>
-      <td class='ox'>O</td>
+      <td>{{q_look3.0}} <span>{{q_what}}</span> {{q_look3.1}}</td>
+      <td class='ox'>{{test.answer3}}</td>
     </tr>
   </table>
   <div class='button'>
-    <button type='input'>끝내기</button>
+    <a href = "{% url 'input' %}" ><button type='input'>끝내기</button></a>
   </div>
 </body>
 </html>

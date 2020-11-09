@@ -75,3 +75,8 @@ def mypage(request):
 
 def mypage_edit(request):
     return render(request, 'mypage_edit.html')
+
+def logout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        return redirect('login')
