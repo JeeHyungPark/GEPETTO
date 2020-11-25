@@ -31,6 +31,8 @@
   </table>
   <div class='button'>
     <a href = "{% url 'input' %}" ><button type='input'>끝내기</button></a>
+    당신이 제출한 진술이 잘못 번역되었습니까?
+    <a href = "{% url 'check' test.id %}">진술 수정하고 다시 테스트 진행하기</a>
   </div>
 </body>
 </html>
