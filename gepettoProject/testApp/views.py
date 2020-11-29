@@ -114,7 +114,7 @@ together_list= []
 what_list= []
 
 for datafile in file_list: 
-    f= open(path_dir+datafile, 'r')  
+    f= open(path_dir+datafile, 'r', encoding='UTF8')  
     statement= f.readline()
     unit= statement.split() 
     who= unit[0]  
