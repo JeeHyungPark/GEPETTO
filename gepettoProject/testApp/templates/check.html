@@ -8,10 +8,10 @@
 <body>
   <div>
     <h1> 확인 질문 </h1>
-    "{{response}}" 가 맞습니까?
+    "{{test.text}}" 가 맞습니까?
     <br>
     <br>
-    <form method="POST" action="{% url 'question' test.id %}">
+    <form method="POST" action="{% url 'result' test.id %}">
       {% csrf_token %}
       <input type="submit" value="예"/>
     </form>

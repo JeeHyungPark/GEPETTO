@@ -8,13 +8,12 @@ import requests
 def input(request):
     return render(request, 'input.html')
 
-def check(request):
-    
-   if request.method == 'POST':
+def loading(request):
+    if request.method == 'POST':
         test = Test.objects.create(
             tester = request.user,
             statement = request.FILES['statement']
-        )
+        ) 
 
         file_path= 'testApp'+test.statement.url 
         data= open(file_path, "rb") # STT를 진행하고자 하는 음성 파일
@@ -30,7 +29,7 @@ def check(request):
             "X-NCP-APIGW-API-KEY-ID": ID,
             "X-NCP-APIGW-API-KEY": Secret,
         }
-        response= requests.post(URL,  data=data, headers=headers)
+        response= requests.post(URL, data=data, headers=headers)
         rescode= response.status_code
 
         if(rescode== 200):
@@ -41,24 +40,26 @@ def check(request):
         test.text = response[9:-2]
         test.save()
 
-        return render(request, 'check.html', {'response':response[9:-2], 'test':test})
+        return render(request, 'loading.html', {'test':test})
+
+def check(request, test_id):
+    test = Test.objects.get(pk = test_id)
+    return render(request, 'check.html', {'test':test})
 
 def question(request, test_id):
-    if request.method == 'POST':
+    if 'modified_statement' in request.POST:
+        test = Test.objects.get(pk = test_id)
+        test.text = request.POST['modified_statement']
+        test.save()
 
-        if 'modified_statement' in request.POST:
-            test = Test.objects.get(pk = test_id)
-            test.text = request.POST['modified_statement']
-            test.save()
-
-        mytest = Test.objects.get(pk = test_id)
-        myStatement = mytest.text
-        dataClass = data()
-        originalStatement = dataClass.splitMystatement(myStatement)
-        mytest.question1 = dataClass.makeQuestion1(originalStatement)[0]
-        mytest.question2 = dataClass.makeQuestion2(originalStatement)[0]
-        mytest.question3 = dataClass.makeQuestion3(originalStatement)[0]
-        mytest.save()
+    mytest = Test.objects.get(pk = test_id)
+    myStatement = mytest.text
+    dataClass = data()
+    originalStatement = dataClass.splitMystatement(myStatement)
+    mytest.question1 = dataClass.makeQuestion1(originalStatement)[0]
+    mytest.question2 = dataClass.makeQuestion2(originalStatement)[0]
+    mytest.question3 = dataClass.makeQuestion3(originalStatement)[0]
+    mytest.save()
 
     return render(request, 'question.html', {'mytest':mytest})
 

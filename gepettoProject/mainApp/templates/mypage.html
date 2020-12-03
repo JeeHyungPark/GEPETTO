@@ -22,7 +22,7 @@
       </div>
       <div class='input'>
         <label for='pw'>PW</label>
-        <input type='password' name='pw' value='********' disabled>  
+        <input type='password' name='pw' value='{{user.password}}' disabled>  
       </div>
       <input type='submit' value='수정하기'>
     </form>
@@ -35,10 +35,14 @@
         <td>진술</td>
         <td>확률</td>
       </header>
+      {% for sample in samples %}
       <tr>
         <td>{{sample.text}}</td>
         <td>{{sample.test_probability}}</td>
+        <!-- <td>저는 지난주 월요일 오후 1시에 집에서 가족과 tv를 봤습니다.</td>
+        <td></td> -->
       </tr>
+      {% endfor %}
     </table>
   </div>
 </body>
