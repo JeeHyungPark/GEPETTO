@@ -10,7 +10,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from .models import User
 from django.db.models import Q
-
+from testApp.models import Test
 
 def main(request):
     return render(request, 'main.html')
@@ -68,9 +68,13 @@ def Logout(request):
 def mypage(request):
     cur_user = request.user
 
-    if cur_user.is_authenticated:  
+    if cur_user.is_authenticated: 
+        user = cur_user
+        queryset = Test.objects.values()
+        test_sample = queryset.filter(tester=user)
+        samples = test_sample
+        return render(request, 'mypage.html', {'user':user, 'samples':samples})
 
-        return render(request, 'mypage.html')
     else:
         return redirect('main')
 
