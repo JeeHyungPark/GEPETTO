@@ -8,5 +8,4 @@ urlpatterns = [
     path('signup/', mainApp.views.SignupView.as_view(), name='signup'),
     path('mypage/', mainApp.views.mypage, name='mypage'),
     path('mypage-edit/', mainApp.views.mypage_edit,name='mypage_edit'),
-    path('logout/', mainApp.views.logout, name='logout'),
 ]

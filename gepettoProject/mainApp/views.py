@@ -49,7 +49,7 @@ class LoginView(FormView):
         queryset = User.objects.all()
         user = queryset.filter(email=credentials['email'], password=credentials['password'])
         print(queryset)
-        print(user[0])
+        #print(user[0])
 
         if user is not None:
             login(self.request, user[0])
@@ -69,6 +69,7 @@ def mypage(request):
     cur_user = request.user
 
     if cur_user.is_authenticated:  
+
         return render(request, 'mypage.html')
     else:
         return redirect('main')
@@ -76,7 +77,3 @@ def mypage(request):
 def mypage_edit(request):
     return render(request, 'mypage_edit.html')
 
-def logout(request):
-    if request.method == 'POST':
-        auth.logout(request)
-        return redirect('login')
