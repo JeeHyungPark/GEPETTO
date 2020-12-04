@@ -35,12 +35,10 @@
         <td>진술</td>
         <td>확률</td>
       </header>
-      {% for sample in samples %}
+      {% for test in user_test %}
       <tr>
-        <td>{{sample.text}}</td>
-        <td>{{sample.test_probability}}</td>
-        <!-- <td>저는 지난주 월요일 오후 1시에 집에서 가족과 tv를 봤습니다.</td>
-        <td></td> -->
+        <td>{{test.text}}</td>
+        <td>{{test.test_probability}}</td>
       </tr>
       {% endfor %}
     </table>

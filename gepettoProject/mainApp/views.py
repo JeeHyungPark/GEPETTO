@@ -70,10 +70,11 @@ def mypage(request):
 
     if cur_user.is_authenticated: 
         user = cur_user
-        queryset = Test.objects.values()
-        test_sample = queryset.filter(tester=user)
-        samples = test_sample
-        return render(request, 'mypage.html', {'user':user, 'samples':samples})
+        user_test = Test.objects.filter(tester = cur_user)
+        # queryset = Test.objects.values()
+        # test_sample = queryset.filter(tester=user)
+        # samples = test_sample
+        return render(request, 'mypage.html', {'user':user, 'user_test':user_test})
 
     else:
         return redirect('main')
