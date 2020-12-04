@@ -90,17 +90,18 @@ def result(request, test_id):
         dataClass = data()
         originalStatement = dataClass.splitMystatement(myStatement)
 
-        q1 = dataClass.makeQuestion1(originalStatement)
-        q2 = dataClass.makeQuestion2(originalStatement)
-        q3 = dataClass.makeQuestion3(originalStatement)
+        q1 = dataClass.splitMystatement(test.question1)
+        q2 = dataClass.splitMystatement(test.question2)
+        q3 = dataClass.splitMystatement(test.question3)
+
 
         q_when = q1[1]
-        q_together = q2[1]
-        q_what = q3[1]
+        q_together = q2[3]
+        q_what = q3[4]
 
-        q_look1 = dataClass.resultLook1(q1)
-        q_look2 = dataClass.resultLook2(q2)
-        q_look3 = dataClass.resultLook3(q3)
+        q_look1 = dataClass.resultLook1(test.question1, q_when)
+        q_look2 = dataClass.resultLook2(test.question2, q_together)
+        q_look3 = dataClass.resultLook3(test.question3, q_what)
 
     return render(request, 'result.html', {'test':test, 'q_when':q_when, 'q_together':q_together, 'q_what':q_what, 'q_look1':q_look1, 'q_look2':q_look2, 'q_look3':q_look3})
 
@@ -139,19 +140,39 @@ statement_list = [who_list, when_list, where_list, together_list, what_list]
 
 class data:
     def splitMystatement(self,statement):
-        unit = statement.split()
-        who = unit[0]
-        for word in unit:
-            if "에서" in word:
+        r_unit = statement.split()
+
+        for word in r_unit:
+            if ("은" in word) or ("는" in word) or ("이" in word) or ("가" in word):
+                who = word
+                r_unit.remove(word)
+                break
+
+        for word in r_unit:
+            if ("에서" in word) or ("서" in word):
                 where = word
-                where_index = unit.index(word)
-                when = unit[1:where_index]
-                when = ' '.join(when)
+                r_unit.remove(word)
+                break
+        
+        for word in r_unit:
             if ("와" in word) or ("과" in word) or ("랑" in word) or ("혼자" in word):
                 together = word
-                together_index= unit.index(word)
-                what = unit[together_index+1:]
-                what = ' '.join(what)
+                r_unit.remove(word)
+                break
+
+        for word in r_unit:
+            if ("제" in word) or ("께" in word) or ("에" in word) or ("일" in word):
+                when_index = r_unit.index(word)
+            elif ("요" in word) or ("다" in word):
+                what_index = r_unit.index(word)
+
+        if (when_index < what_index):
+            when = ' '.join(r_unit[:when_index+1])
+            what = ' '.join(r_unit[when_index+1:])
+        else:
+            when = ' '.join(r_unit[what_index+1:])
+            what = ' '.join(r_unit[:what_index+1])
+
         mystatement = [who, when, where, together, what]
         return mystatement
     
@@ -176,17 +197,17 @@ class data:
         question3 = [" ".join(question3), random_what]
         return question3
 
-    def resultLook1(self, question1):
+    def resultLook1(self, question1, q_when):
         result1 = copy.deepcopy(question1)
-        splitResult1 = result1[0].split(result1[1])
+        splitResult1 = result1.split(q_when)
         return splitResult1
     
-    def resultLook2(self, question2):
+    def resultLook2(self, question2, q_together):
         result2 = copy.deepcopy(question2)
-        splitResult2 = result2[0].split(result2[1])
+        splitResult2 = result2.split(q_together)
         return splitResult2
 
-    def resultLook3(self, question3):
+    def resultLook3(self, question3, q_what):
         result3 = copy.deepcopy(question3)
-        splitResult3 = result3[0].split(result3[1])
+        splitResult3 = result3.split(q_what)
         return splitResult3
