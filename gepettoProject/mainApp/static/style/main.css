@@ -1,10 +1,19 @@
+@font-face {
+    font-family: 'KOTRA_BOLD-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 ul{
+    font-family: 'KOTRA_BOLD-Bold';
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
     background-color: #333;
 }
+
 li {
   float: right;
 }
@@ -20,20 +29,33 @@ li a {
 li a:hover:not(.active) {
   background-color: #111;
 }
+
 div{
-    margin-top: 30px;
+    margin: 100px;
     text-align: center;
 }
+
 .button{
-    width:100px;
+    font-family: 'KOTRA_BOLD-Bold';
     background-color: #333;
     border: none;
     color:#fff;
-    padding: 15px 0;
+    padding: 15px 30px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 15px;
     margin: 4px;
     cursor: pointer;
+    border-radius: 5px;
+}
+
+footer{
+    color: #343e40;
+    margin-top: 100px;
+    height: 140px;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
 }

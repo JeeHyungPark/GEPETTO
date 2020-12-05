@@ -48,8 +48,7 @@ class LoginView(FormView):
         credentials = form.cleaned_data
         queryset = User.objects.all()
         user = queryset.filter(email=credentials['email'], password=credentials['password'])
-        print(queryset)
-        #print(user[0])
+        
 
         if user is not None:
             login(self.request, user[0])

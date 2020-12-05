@@ -14,16 +14,20 @@
     <li><a href="{% url 'mypage' %}">Mypage</a></li>
     <li><a href="{% url 'logout' %}">Logout</a></li>
   </ul> 
+  <div>
+    <h1>진술 음성 파일을 선택 해주세요.</h1>
+  
+    <h3>**누가, 언제, 어디서, 누구와, 무엇을 하였는지가 담겨있는 문장이여야 합니다. <br/>
+        ex1) "저는 지난 주 금요일에 학교 도서관에서 혼자 공부를 했습니다." <br/>
+        ex2) "저는 그저께 하루종일 과제를 했어요. 민지와 카페에서"
+    </h3>
 
-  <h1>아래의 형식에 맞춘 음성 파일을 선택 해주세요.</h1>
- 
-  <h3> "저는 어제 오후 3시에 집에서 유리와 밥을 먹었습니다."</h3>
-
-  <hr/>
-  <form method="POST" action="{% url 'loading' %}" enctype="multipart/form-data">
-    {% csrf_token %}
-    <input  type="file" name="statement">
-    <input class='submit' type=submit name = "submit">
-  </form>
+    <hr/>
+    <form method="POST" action="{% url 'loading' %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      <input  type="file" name="statement">
+      <input class='submit' type=submit name = "submit">
+    </form>
+  </div>
 </body>
 </html>
