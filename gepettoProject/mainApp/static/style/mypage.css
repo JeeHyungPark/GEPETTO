@@ -1,4 +1,12 @@
+@font-face {
+  font-family: 'KOTRA_BOLD-Bold';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 ul{
+    font-family: 'KOTRA_BOLD-Bold';
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -40,4 +48,16 @@ input{
 
 form{
     margin: 20px;
+}
+
+h4{
+  font-family: 'KOTRA_BOLD-Bold';
+}
+
+.th{
+  font-family: 'KOTRA_BOLD-Bold';
+}
+
+.test_probability{
+  color: #00498c;
 }

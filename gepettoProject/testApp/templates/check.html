@@ -7,21 +7,21 @@
 </head>
 <body>
   <div>
-    <h1> 확인 질문 </h1>
+    <h1>당신의 진술을 확인합니다.</h1>
     "{{test.text}}" 가 맞습니까?
     <br>
     <br>
     <form method="POST" action="{% url 'result' test.id %}">
       {% csrf_token %}
-      <input type="submit" value="예"/>
+      <input class='button' type="submit" value="예"/>
     </form>
     <br>
-    <button onclick="showForm()">수정하기</button>
+    <button class='button' onclick="showForm()">수정하기</button>
     <div id="modify">
       <form method="POST" action="{% url 'question' test.id %}">
         {% csrf_token %}
         <input type="text" name="modified_statement" value="{{test.text}}" maxlength=50>
-        <input type="submit" value="수정완료">
+        <input class='button' type="submit" value="수정완료">
       </form>
     </div>
   </div>
