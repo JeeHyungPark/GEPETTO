@@ -10,7 +10,8 @@
     <li style="float: left"><a href="{% url 'main' %}">GEPETTO</a></li>
   </ul>
   <div>
-    GEPETTO는 거짓말을 하면 말한 내용이 일치 하지 않는 것을 이용하여 진술을 받아 말한 사람이 진술을 기억하고 있는지 아닌지를 파악하는 프로그램입니다. 
+    GEPETTO는 사용자가 입력한 음성 진술 파일에서 정보를 추출하여,<br/>
+    세 개의 질문을 생성하고 답을 응답받아 정답여부로 사용자의 거짓말 확률을 판별해주는 프로그램입니다.
   </div>
   <div>
     {% if user.is_authenticated %}
@@ -24,7 +25,9 @@
       <input class="button" type='submit' value="탐지하러 가기">
     </form>
     {% endif %}
-
   </div>
+  <footer>
+    <div>만든이 : 서울여자대학교 정보보호학과 박지형, 송유리, 안유림, 홍승아</div>
+  </footer>
 </body>
 </html>

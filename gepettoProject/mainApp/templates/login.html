@@ -14,24 +14,15 @@
       <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
       {% endfor %}
   </ul>
-{% endif %}
+  {% endif %}
   <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <!-- <div>
-      <label for="nickname">닉네임</label>
-      <input type="text" name="nickname"  placeholder="닉네임을 입력하세요"/>
-    </div>
-    <div>
-      <label for="password">비밀번호</label>
-      <input type="password" name="password" placeholder="비밀번호를 입력하세요"/>
-    </div> -->
     <div>
       <input class="submit" type="submit" value="입장"/>
     </div>
     <br>
     아직 회원이 아니신가요? <a href="{% url 'signup' %}">회원가입</a>
-    <!-- <input type="button" value="ID/PW 찾기"/>       -->
   </form>
 </body>
 </html>

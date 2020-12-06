@@ -64,7 +64,7 @@ def question(request, test_id):
     return render(request, 'question.html', {'mytest':mytest})
 
 def result(request, test_id):
-    if request.method == 'POST':
+    if 'ox1' in request.POST:
         incorrect_number = 0
 
         answer1 = request.POST['ox1']
@@ -94,6 +94,26 @@ def result(request, test_id):
         q2 = dataClass.splitMystatement(test.question2)
         q3 = dataClass.splitMystatement(test.question3)
 
+
+        q_when = q1[1]
+        q_together = q2[3]
+        q_what = q3[4]
+
+        q_look1 = dataClass.resultLook1(test.question1, q_when)
+        q_look2 = dataClass.resultLook2(test.question2, q_together)
+        q_look3 = dataClass.resultLook3(test.question3, q_what)
+    
+    else:
+        test = Test.objects.get(pk=test_id)
+
+        myStatement = test.text
+
+        dataClass = data()
+        originalStatement = dataClass.splitMystatement(myStatement)
+
+        q1 = dataClass.splitMystatement(test.question1)
+        q2 = dataClass.splitMystatement(test.question2)
+        q3 = dataClass.splitMystatement(test.question3)
 
         q_when = q1[1]
         q_together = q2[3]

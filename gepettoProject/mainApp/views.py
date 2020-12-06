@@ -48,8 +48,7 @@ class LoginView(FormView):
         credentials = form.cleaned_data
         queryset = User.objects.all()
         user = queryset.filter(email=credentials['email'], password=credentials['password'])
-        print(queryset)
-        #print(user[0])
+        
 
         if user is not None:
             login(self.request, user[0])
@@ -70,10 +69,11 @@ def mypage(request):
 
     if cur_user.is_authenticated: 
         user = cur_user
-        queryset = Test.objects.values()
-        test_sample = queryset.filter(tester=user)
-        samples = test_sample
-        return render(request, 'mypage.html', {'user':user, 'samples':samples})
+        user_test = Test.objects.filter(tester = cur_user)
+        # queryset = Test.objects.values()
+        # test_sample = queryset.filter(tester=user)
+        # samples = test_sample
+        return render(request, 'mypage.html', {'user':user, 'user_test':user_test})
 
     else:
         return redirect('main')

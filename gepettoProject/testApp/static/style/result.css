@@ -1,3 +1,10 @@
+@font-face {
+    font-family: 'KOTRA_BOLD-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.1/KOTRA_BOLD-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 body{
     padding: 100px;
     text-align: center;
@@ -8,6 +15,7 @@ body{
 }
 
 .result_percent{
+    font-family: 'KOTRA_BOLD-Bold';
     font-size: 46px;
     color: darkred;
 }
@@ -28,8 +36,17 @@ table{
     margin: auto;
 }
 
-.button{
-    margin-top: 20px;
-    text-align: right;
-    padding-right: 20%;
+.button button{
+    font-family: 'KOTRA_BOLD-Bold';
+    background-color: #333;
+    border: none;
+    color:#fff;
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin: 20px;
+}
+
+.check{
+    color: #343e40;
+    font-size: 13px;
 }
