@@ -49,15 +49,15 @@ class LoginView(FormView):
         queryset = User.objects.all()
         user = queryset.filter(email=credentials['email'], password=credentials['password'])
         
-
-        if user is not None:
+        if len(user) != 0:
             login(self.request, user[0])
             return HttpResponseRedirect(self.success_url)
 
         else:
-            messages.add_message(self.request, messages.INFO, 'Wrong credentials\
-                                please try again')
+            # messages.add_message(self.request, messages.INFO, 'Wrong credentials\
+            #                     please try again')
             return HttpResponseRedirect('http://127.0.0.1:8000/login')
+
 
 
 def Logout(request):
